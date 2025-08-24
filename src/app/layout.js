@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
+import Navbar from "../components/Utilities/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,17 +21,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+      <Head>
+        <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="w-full flex flex-row items-center justify-between border px-20 py-3 ">
-          <h1 className="font-bold text-md md:text-2xl">ANIMELIST</h1>
-          <div className="relative">
-            <input className="focus:decoration-0 border rounded-xl px-2 py-1 w-full" type="text" placeholder="Search..."></input>
-            <button className="absolute right-5 top-1 text-xl">
-              <i class="lni lni-search-1 "></i>
-            </button>
-          </div>
-        </div>
+        <Navbar />
         {children}
       </body>
     </html>
