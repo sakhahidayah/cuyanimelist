@@ -21,9 +21,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
-      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
         {children}
