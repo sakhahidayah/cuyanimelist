@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
 const AnimeList = ({ data }) => {
   const listAnimeTop = data;
-  // console.log("ini datas", data);
   return (
     <>
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-5 gap-4 p-2">
@@ -12,7 +10,7 @@ const AnimeList = ({ data }) => {
             <Link href={`/${anime.mal_id}`} key={anime.mal_id} className="shadow-xl group cursor-pointer">
               <Image className="rounded-lg w-full max-h-56 md:max-h-80 object-top" src={anime.images.jpg.image_url} width={350} height={350} alt="Placeholder" unoptimized />
               <div className="p-3  min-h-20 ">
-                <h1 className="font-bold lg:text-xl text-sm group-hover:text-[#bfbc78]">{anime.title}</h1>
+                <h1 className="font-bold lg:text-xl text-sm group-hover:text-accent transition-all">{anime.title}</h1>
               </div>
             </Link>
           );

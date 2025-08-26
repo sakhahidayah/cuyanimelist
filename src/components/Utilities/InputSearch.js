@@ -21,8 +21,8 @@ const InputSearch = () => {
   return (
     <>
       <div className="relative">
-        <input className="focus:outline-2 focus:border-0 focus:outline-[#bfbc78]  border rounded-xl px-2 py-1 w-full" type="text" placeholder="Search..." ref={searchInput} onKeyDown={handleEnterKey} />
-        <button onClick={handleSearchInput} className="absolute right-4 top-[6px] cursor-pointer flex justify-center items-center">
+        <input className="focus:outline-2  focus:outline-[#bfbc78]  border rounded-xl px-3  py-1 w-full" type="text" placeholder="Cari anime..." ref={searchInput} onKeyDown={handleEnterKey} />
+        <button onClick={handleSearchInput} className="absolute right-4 top-[7px] cursor-pointer flex justify-center items-center">
           <MagnifyingGlassIcon size={18} />
         </button>
       </div>

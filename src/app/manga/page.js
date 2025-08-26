@@ -6,8 +6,8 @@ const Manga = async () => {
     <>
       <div className="mx-4 pt-6 text-white">
         <div className="flex justify-center relative px-2 mb-10">
-          <div className="relative w-full h-30 bg-[url('/banner-dragon.jpg')] bg-cover"></div>
-          <h1 className="font-bold text-2xl absolute top-10 text-white">MANGA PALING POPULER</h1>
+          <div className="relative w-full h-36 bg-[url('/banner-dragon.jpg')] bg-cover"></div>
+          <h1 className="font-bold text-2xl absolute top-16 text-white">MANGA PALING POPULER</h1>
         </div>
         <AnimeList data={mangaTop} />
       </div>
