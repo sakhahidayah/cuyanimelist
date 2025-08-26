@@ -8,7 +8,7 @@ const InputSearch = () => {
   const searchInput = useRef();
   const router = useRouter();
   const handleSearchInput = (event) => {
-    if (event.key === "Enter" || event.onClick === "onClick") {
+    if (event.key === "Enter" || event.type === "click") {
       event.preventDefault();
       if (!searchInput.current.value) {
         toast.error("Kolom pencarian tidak boleh kosong.");

@@ -11,7 +11,7 @@ const Page = async ({ params }) => {
       <section>
         <div className="mx-4 pt-6 text-white">
           <Header title={`Pencarian untuk... ( ${decodeKeyword} )`} linkPage={"/"} linkHeader={"Kembali"} />
-          <AnimeList data={searchAnime} />
+          <AnimeList api={searchAnime} />
         </div>
       </section>
     </>
