@@ -10,12 +10,22 @@ const Pagination = ({ page, update, lastPage }) => {
   };
 
   const handleNextPage = () => {
-    update(page + 1);
-    scrollTop();
+    if (page == lastPage) {
+      update((page = 1));
+      scrollTop();
+    } else {
+      update(page + 1);
+      scrollTop();
+    }
   };
   const handlePrevPage = () => {
-    update(page - 1);
-    scrollTop();
+    if (page - 1 == 0) {
+      update(lastPage);
+      scrollTop();
+    } else {
+      update(page - 1);
+      scrollTop();
+    }
   };
   return (
     <>
