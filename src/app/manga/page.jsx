@@ -3,6 +3,7 @@
 import AnimeList from "@/components/AnimeList";
 import HeaderBanner from "@/components/Utilities/HeaderBanner";
 import Pagination from "@/components/Utilities/Pagination";
+import { getReponseApi } from "../library/getApi";
 import { useEffect, useState } from "react";
 const Page = () => {
   const [page, setPage] = useState(1);
@@ -11,8 +12,7 @@ const Page = () => {
   };
   const [manga, setManga] = useState([]);
   const fetchData = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/manga?page=${page}`);
-    const data = await response.json();
+    const data = await getReponseApi("top/manga", `page=${page}`);
     setManga(data);
   };
 

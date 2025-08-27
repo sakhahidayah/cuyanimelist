@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 img {
-  height: auto;
+  /* width: 100%; */
   transition: 0.3s ease all;
   -webkit-transition: 0.3 ease all;
   -moz-transition: 0.3s ease all;
@@ -17,6 +17,12 @@ body {
 
 img:hover {
   scale: 102%;
+}
+
+span {
+  font-weight: bold;
+  color: white;
+  margin-right: 4px;
 }
 
 .custom-loader {

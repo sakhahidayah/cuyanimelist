@@ -4,6 +4,7 @@ import AnimeList from "@/components/AnimeList";
 import HeaderBanner from "@/components/Utilities/HeaderBanner";
 import Pagination from "@/components/Utilities/Pagination";
 import { useEffect, useState } from "react";
+import { getReponseApi } from "../library/getApi";
 const Page = () => {
   const [page, setPage] = useState(1);
   const updatePage = (newPage) => {
@@ -11,8 +12,7 @@ const Page = () => {
   };
   const [anime, setAnime] = useState([]);
   const fetchData = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`);
-    const data = await response.json();
+    const data = await getReponseApi("top/anime", `page=${page}`);
     setAnime(data);
   };
 
