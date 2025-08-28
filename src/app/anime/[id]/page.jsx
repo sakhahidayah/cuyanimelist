@@ -22,7 +22,6 @@ const Page = async ({ params: { id } }) => {
                 </div>
               </div>
             </div>
-            <div className="px-3 py-1 md:hidden  bg-[#181818] text-sm text-slate-300">Synopsis : {detailAnime.synopsis}</div>
 
             <div className="md:flex hidden md:flex-col gap-2 text-xs text-slate-200  ">
               <p>
@@ -121,6 +120,7 @@ const Page = async ({ params: { id } }) => {
               <VidioPlayer youtubeId={detailAnime.trailer.youtube_id} width={"75%"} height={350} />
             </div>
           </div>
+          <div className="px-3 py-1 md:hidden  bg-[#181818] text-sm text-slate-300">Synopsis : {detailAnime.synopsis}</div>
         </div>
       </div>
     </>

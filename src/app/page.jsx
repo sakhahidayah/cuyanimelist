@@ -1,5 +1,6 @@
 import Header from "@/components/AnimeList/Header";
 import AnimeList from "../components/AnimeList";
+import MangaList from "@/components/MangaList";
 import { getReponseApi } from "./library/getApi";
 const Page = async () => {
   const animeTop = await getReponseApi("top/anime", "limit=10");
@@ -16,8 +17,8 @@ const Page = async () => {
       {/* {Manga Top} */}
       <section>
         <div className="mx-4 pt-6 text-white">
-          <Header title={"MANGA PALING TOP"} linkPage={"/manga"} linkHeader={"Lihat semua"} />
-          <AnimeList api={mangaTop} />
+          <Header title={"MANGA PALING TOP"} linkPage={"/manga-populer"} linkHeader={"Lihat semua"} />
+          <MangaList api={mangaTop} />
         </div>
       </section>
     </>
