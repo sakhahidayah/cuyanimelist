@@ -1,6 +1,7 @@
 import { getReponseApi } from "../../library/getApi";
 import Image from "next/image";
-const Page = async ({ params: { id } }) => {
+const Page = async ({ params }) => {
+  const { id } = await params;
   const getMangaDetail = await getReponseApi(`manga/${id}`);
   const detailManga = await getMangaDetail?.data;
   return (

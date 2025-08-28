@@ -1,7 +1,8 @@
 import { getReponseApi } from "../../library/getApi";
 import Image from "next/image";
 import VidioPlayer from "@/components/Utilities/VidioPlayer";
-const Page = async ({ params: { id } }) => {
+const Page = async ({ params }) => {
+  const { id } = await params;
   const getAnimeDetail = await getReponseApi(`anime/${id}`);
   const detailAnime = await getAnimeDetail?.data;
   return (

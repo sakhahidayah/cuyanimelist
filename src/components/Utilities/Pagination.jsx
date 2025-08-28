@@ -30,13 +30,13 @@ const Pagination = ({ page, update, lastPage }) => {
   return (
     <>
       <div className="flex flex-row gap-4 text-white items-center justify-center mt-5">
-        <button className=" hover:text-accent transition-all text-2xl font-bold" onClick={handlePrevPage}>
+        <button className=" hover:text-accent transition-all text-lg md:text-2xl font-bold" onClick={handlePrevPage}>
           Prev
         </button>
-        <p className="text-xl font-medium">
+        <p className="md:text-xl text-sm font-medium">
           {page} of {lastPage}
         </p>
-        <button className=" hover:text-accent transition-all text-2xl font-bold" onClick={handleNextPage}>
+        <button className=" hover:text-accent transition-all md:text-2xl text-lg font-bold" onClick={handleNextPage}>
           Next
         </button>
       </div>
