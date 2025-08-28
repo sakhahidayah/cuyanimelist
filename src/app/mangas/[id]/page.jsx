@@ -56,7 +56,7 @@ const Page = async ({ params: { id } }) => {
               <h1 className="text-xl font-bold text-slate-500">{detailManga.title_japanese}</h1>
             </div>
             <div className="max-w-xl  rounded-lg py-2 px-4 bg-[#181818]">
-              <div className=" md:grid md:grid-cols-4 flex flex-row flex-wrap gap-2 w-full justify-around ">
+              <div className=" md:grid md:grid-cols-4 grid grid-cols-2  gap-2 w-full justify-around ">
                 <div className=" gap-1 flex flex-col items-center  ">
                   <p className="px-4 py-1 w-max bg-accent rounded-lg">Score</p>
                   <p className="font-semibold text-2xl">{detailManga.score}</p>
