@@ -34,7 +34,6 @@ const Page = async ({ params }) => {
                 </div>
               </div>
             </div>
-
             <div className="md:flex hidden md:flex-col gap-2 text-xs text-slate-200  ">
               <p>
                 <span>Type :</span>
@@ -62,7 +61,7 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Producers: </span>
-                {detailAnime.producers[0].name}
+                {!detailAnime.producers ? detailAnime.producers[0].name : <span className="font-bold text-xs">Unknown</span>}
               </p>
               <p>
                 <span>Licensors :</span>
