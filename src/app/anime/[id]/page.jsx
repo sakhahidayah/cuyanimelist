@@ -61,11 +61,11 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Producers: </span>
-                {!detailAnime.producers ? detailAnime.producers[0].name : <span className="font-bold text-xs">Unknown</span>}
+                {!detailAnime.producers ? detailAnime.producers[0].name : "Unknown"}
               </p>
               <p>
                 <span>Licensors :</span>
-                {!detailAnime.licensors ? detailAnime.licensors[0].name : <span className="font-bold text-xs">Unknown</span>}
+                {!detailAnime.licensors ? detailAnime.licensors[0].name : "Unknown"}
               </p>
               <p>
                 <span>Source :</span>
@@ -77,7 +77,7 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Demographic :</span>
-                {detailAnime.demographics[0]?.name}
+                {!detailAnime.demographics ? detailAnime.demographics[0].name : "Unknown"}
               </p>
               <p>
                 <span>Duration :</span>

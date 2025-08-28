@@ -62,11 +62,11 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Themes : </span>
-                {detailManga.themes[0].name}
+                {!detailManga.themes ? detailManga.themes[0].name : "Unknown"}
               </p>
               <p>
                 <span>Serialization :</span>
-                {!detailManga.serializations ? detailManga.serializations[0].name : <span className="font-bold text-xs">Unknown</span>}
+                {!detailManga.serializations ? detailManga.serializations[0].name : "Unknown"}
               </p>
               <p>
                 <span>Demographic :</span>
