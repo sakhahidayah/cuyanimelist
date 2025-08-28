@@ -10,9 +10,20 @@ const Page = async ({ params }) => {
       <div className=" w-full text-white py-2 px-4">
         <div className=" md:mx-4 md:p-4 mt-4 flex flex-col md:flex-row  gap-2">
           <div className="md:flex md:flex-col  gap-2">
-            <div className="flex md:flex-col flex-row mt-2 gap-3  px-2 py-1">
+            <div className="flex md:flex-col flex-row mt-2 gap-3   py-1">
               <Image className="rounded max-w-40 max-h-56 md:max-h-80 object-top" src={detailAnime.images.jpg.image_url} width={200} height={350} alt="Placeholder" unoptimized />
-              <div className="pb-1 hidden md:flex md:flex-col">Alternative Titles</div>
+              <div className="pb-1 hidden md:flex md:flex-col border-b border-t ">
+                <h1 className="font-bold text-md">Alternative Titles</h1>
+                <div className="flex flex-col">
+                  {detailAnime.title_synonyms.map((titleSynonyms, index) => {
+                    return (
+                      <p key={index} className="text-xs text-slate-400">
+                        {titleSynonyms},
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
               <div className="md:hidden  w-full h-max border-b flex gap-3 flex-col border-slate-400">
                 <div className=" border-b border-slate-500">
                   <h1 className="text-xl font-bold">{detailAnime.title}</h1>
@@ -43,11 +54,11 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Premiered : </span>
-                {detailAnime.season} {detailAnime.year}
+                {!detailAnime.season && !detailAnime.year ? "Unknown" : detailAnime.season && detailAnime.year}
               </p>
               <p>
                 <span>Broadcast :</span>
-                {detailAnime.broadcast.string}
+                {detailAnime.broadcast.string ?? "Unknown"}
               </p>
               <p>
                 <span>Producers: </span>
@@ -55,7 +66,7 @@ const Page = async ({ params }) => {
               </p>
               <p>
                 <span>Licensors :</span>
-                {detailAnime.licensors[0].name}
+                {!detailAnime.licensors ? detailAnime.licensors[0].name : <span className="font-bold text-xs">Unknown</span>}
               </p>
               <p>
                 <span>Source :</span>
