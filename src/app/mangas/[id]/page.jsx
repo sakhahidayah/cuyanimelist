@@ -1,4 +1,4 @@
-import { getReponseApi } from "../../library/getApi";
+import { getReponseApi } from "../../../library/getApi";
 import Image from "next/image";
 const Page = async ({ params }) => {
   const { id } = await params;

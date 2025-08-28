@@ -1,4 +1,4 @@
-import { getReponseApi } from "../../library/getApi";
+import { getReponseApi } from "../../../library/getApi";
 import Image from "next/image";
 import VidioPlayer from "@/components/Utilities/VidioPlayer";
 const Page = async ({ params }) => {

@@ -2,7 +2,7 @@
 
 import HeaderBanner from "@/components/Utilities/HeaderBanner";
 import Pagination from "@/components/Utilities/Pagination";
-import { getReponseApi } from "../library/getApi";
+import { getReponseApi } from "../../library/getApi";
 import { useEffect, useState } from "react";
 import MangaList from "@/components/MangaList";
 const Page = () => {

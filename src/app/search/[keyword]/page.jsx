@@ -1,8 +1,8 @@
 import Header from "@/components/AnimeList/Header";
 import AnimeList from "@/components/AnimeList";
-import { getReponseApi } from "@/app/library/getApi";
+import { getReponseApi } from "@/library/getApi";
 const Page = async ({ params }) => {
-  const keyword = params.keyword.toUpperCase();
+  const { keyword } = await params;
   const decodeKeyword = decodeURI(keyword);
 
   const searchAnime = await getReponseApi("anime", `q=${keyword}`);
