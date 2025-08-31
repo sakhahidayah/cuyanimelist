@@ -4,7 +4,6 @@ import MangaList from "@/components/MangaList";
 import { getReponseApi, getRecomendations, randomize } from "../library/getApi";
 const Page = async () => {
   const animeTop = await getReponseApi("top/anime", "limit=10");
-  const mangaTop = await getReponseApi("top/manga", "limit=10");
   let recommendationAnime = await getRecomendations("recommendations/anime", "entry");
 
   recommendationAnime = randomize(recommendationAnime, 10);
@@ -22,12 +21,12 @@ const Page = async () => {
           <AnimeList api={recommendationAnime} />
         </div>
       </section>
-      <section>
+      {/* <section>
         <div className="mx-4 pt-6 mt-20 text-white">
           <Header title={"MANGA PALING TOP"} linkPage={"/manga-populer"} linkHeader={"Lihat semua"} />
           <MangaList api={mangaTop} />
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

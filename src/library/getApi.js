@@ -10,7 +10,6 @@ export const getRecomendations = async (resource, objectProperty) => {
 };
 
 export const randomize = (data, gap) => {
-  // console.log(data);
   const first = Math.floor(Math.random() * (data?.length - gap) + 1);
   const last = first + gap;
 
