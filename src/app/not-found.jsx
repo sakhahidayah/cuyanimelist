@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 const NotFound = () => {
   const router = useRouter();
   const handleBack = () => {
-    router.push("/");
+    router.back();
   };
   return (
     <>
@@ -15,7 +15,7 @@ const NotFound = () => {
             <h3 className="text-4xl text-accent font-bold">| NOT FOUND PAGE</h3>
           </div>
           <button onClick={handleBack} className="border px-4 py-1 bg-secondary rounded-xl text-2xl w-max hover:text-accent transition-all font-bold">
-            BACK TO HOMEPAGE
+            BACK
           </button>
         </div>
       </div>

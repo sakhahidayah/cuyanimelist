@@ -6,6 +6,9 @@ const nextConfig = {
         hostname: "placehold.co",
       },
       {
+        hostname: "cdn.myanimelist.net",
+      },
+      {
         hostname: "avatars.githubusercontent.com",
       },
     ],

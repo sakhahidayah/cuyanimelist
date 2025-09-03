@@ -1,37 +1,38 @@
 import { getReponseApi } from "../../../library/getApi";
 import Image from "next/image";
 import VidioPlayer from "@/components/Utilities/VidioPlayer";
+import CollectionButton from "@/components/Utilities/CollectionButton";
+import { getAuthSession } from "@/library/next-auth";
+import prisma from "@/library/prisma";
 const Page = async ({ params }) => {
   const { id } = await params;
   const getAnimeDetail = await getReponseApi(`anime/${id}`);
   const detailAnime = await getAnimeDetail?.data;
+  const user = await getAuthSession();
+  const collection = await prisma.collection.findFirst({ where: { anime_mal_id: id, email_id: user?.email } });
   return (
     <>
-      <div className=" w-full text-white py-2 px-4">
-        <div className=" md:mx-4 md:p-4 mt-4 flex flex-col md:flex-row  gap-2">
-          <div className="md:flex md:flex-col  gap-2">
-            <div className="flex md:flex-col flex-row mt-2 gap-3   py-1">
-              <Image className="rounded max-w-40 max-h-56 md:max-h-80 object-top" src={detailAnime.images.jpg.image_url} width={200} height={350} alt="Placeholder" unoptimized />
-              <div className="pb-1 hidden md:flex md:flex-col border-b border-t ">
-                <h1 className="font-bold text-md">Alternative Titles</h1>
-                <div className="flex flex-col">
-                  {detailAnime.title_synonyms.map((titleSynonyms, index) => {
-                    return (
-                      <p key={index} className="text-xs text-slate-400">
-                        {titleSynonyms},
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="md:hidden  w-full h-max border-b flex gap-3 flex-col border-slate-400">
-                <div className=" border-b border-slate-500">
-                  <h1 className="text-xl font-bold">{detailAnime.title}</h1>
-                  <h1 className="text-xl font-bold text-slate-500 ">{detailAnime.title_japanese}</h1>
-                </div>
-                <div className="md:hidden">
-                  <VidioPlayer youtubeId={detailAnime.trailer.youtube_id} width={170} height={150} />
-                </div>
+      <div className=" w-full text-white py-2 items-start px-4 flex flex-col md:flex-row  gap-3">
+        <div className="flex flex-col ">
+          <div className="w-full h-max border-b flex flex-rowm md:flex-col md:items-start md:py-1 justify-between  gap-3 items-center border-slate-400">
+            <div className="flex flex-col">
+              <h1 className="text-xl font-bold">{detailAnime.title}</h1>
+              <h1 className="text-xl font-bold text-slate-500">{detailAnime.title_japanese}</h1>
+            </div>
+            {!collection && user && <CollectionButton email_id={user?.email} anime_mal_id={id} />}
+          </div>
+          <div className="flex flex-row w-full md:w-max md:flex-col mt-2  px-2 gap-5 py-1">
+            <Image className="rounded max-w-40 max-h-56 md:max-h-80 object-top" src={detailAnime.images.jpg.image_url} width={200} height={350} alt="Placeholder" unoptimized />
+            <div className="pb-1 flex flex-col border-b ">
+              <h1 className="font-bold text-md">Alternative Titles</h1>
+              <div className="flex flex-col">
+                {detailAnime.title_synonyms.map((titleSynonyms, index) => {
+                  return (
+                    <p key={index} className="text-xs text-slate-400">
+                      {titleSynonyms},
+                    </p>
+                  );
+                })}
               </div>
             </div>
             <div className="md:flex hidden md:flex-col gap-2 text-xs text-slate-200  ">
@@ -93,45 +94,37 @@ const Page = async ({ params }) => {
               </p>
             </div>
           </div>
-          <div className="w-full px-4 py-1 flex flex-col gap-3  ">
-            <div className="hidden  w-full h-max border-b md:flex md:flex-col border-slate-400">
-              <h1 className="text-xl font-bold">{detailAnime.title}</h1>
-              <h1 className="text-xl font-bold text-slate-500">{detailAnime.title_japanese}</h1>
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className=" grid grid-cols-2  gap-2 bg-[#181818] py-3 rounded-lg">
+            <div className=" gap-1 flex flex-col items-center  ">
+              <p className="px-4 py-1 w-max bg-accent rounded-lg">Score</p>
+              <p className="font-semibold text-2xl">{detailAnime.score}</p>
+              <p className="text-xs font-medium text-slate-400">{detailAnime.scored_by} users</p>
             </div>
-            <div className="max-w-xl  rounded-lg py-2 px-4 bg-[#181818]">
-              <div className=" md:grid md:grid-cols-4 flex flex-row flex-wrap gap-2 w-full justify-around ">
-                <div className=" gap-1 flex flex-col items-center  ">
-                  <p className="px-4 py-1 w-max bg-accent rounded-lg">Score</p>
-                  <p className="font-semibold text-2xl">{detailAnime.score}</p>
-                  <p className="text-xs font-medium text-slate-400">{detailAnime.scored_by} users</p>
-                </div>
 
-                <div className=" gap-2 flex justify-between flex-col items-center  ">
-                  <p className="px-4 py-1 w-max bg-accent rounded-lg">Rank #{detailAnime.rank}</p>
-                  <p className="text-xs font-medium text-slate-400">Episodes : {detailAnime.episodes}</p>
-                </div>
-
-                <div className=" gap-2 flex justify-between flex-col items-center  ">
-                  <p className="px-4 py-1 w-max bg-accent rounded-lg">Popularity #{detailAnime.popularity}</p>
-                  <p className="text-xs font-medium text-slate-400">
-                    Season : {detailAnime.season} {detailAnime.year}
-                  </p>
-                </div>
-
-                <div className=" gap-2 flex flex-col items-center  ">
-                  <p className="px-4 py-1 w-max bg-accent rounded-lg">Members</p>
-                  <p>{detailAnime.members}</p>
-                  <p className="text-xs font-medium text-slate-400">Status : {detailAnime.status}</p>
-                </div>
-              </div>
+            <div className=" gap-2 flex justify-between flex-col items-center  ">
+              <p className="px-4 py-1 w-max bg-accent rounded-lg">Rank #{detailAnime.rank}</p>
+              <p className="text-xs font-medium text-slate-400">Episodes : {detailAnime.episodes}</p>
             </div>
-            <div className="px-3 py-1 hidden md:block bg-[#181818] text-sm text-slate-300">Synopsis : {detailAnime.synopsis}</div>
 
-            <div className="hidden md:block">
-              <VidioPlayer youtubeId={detailAnime.trailer.youtube_id} width={"75%"} height={350} />
+            <div className=" gap-2 flex justify-between flex-col items-center  ">
+              <p className="px-4 py-1 w-max bg-accent rounded-lg">Popularity #{detailAnime.popularity}</p>
+              <p className="text-xs font-medium text-slate-400">
+                Season : {detailAnime.season} {detailAnime.year}
+              </p>
+            </div>
+
+            <div className=" gap-2 flex flex-col items-center   ">
+              <p className="px-4 py-1 w-max bg-accent rounded-lg">Members</p>
+              <p>{detailAnime.members}</p>
+              <p className="text-xs font-medium text-slate-400">Status : {detailAnime.status}</p>
             </div>
           </div>
-          <div className="px-3 py-1 md:hidden  bg-[#181818] text-sm text-slate-300">Synopsis : {detailAnime.synopsis}</div>
+          <div className="flex flex-col md:flex-col-reverse">
+            <VidioPlayer youtubeId={detailAnime.trailer.youtube_id} />
+            <div className="px-3 py-1 bg-[#181818] text-sm text-slate-300">Synopsis : {detailAnime.synopsis}</div>
+          </div>
         </div>
       </div>
     </>

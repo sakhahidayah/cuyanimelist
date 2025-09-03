@@ -2,24 +2,26 @@
 
 import React from "react";
 import YouTube from "react-youtube";
-const VidioPlayer = ({ youtubeId, width, height }) => {
-  const option = {
-    width: width,
-    height: height,
+const VidioPlayer = ({ youtubeId }) => {
+  const opts = {
+    playerVars: {
+      autoplay: 0,
+    },
   };
+
   return (
-    <>
-      <div>
-        <YouTube
-          //   className="w-full "
-          videoId={youtubeId}
-          onReady={(event) => {
-            event.target.pauseVideo();
-          }}
-          opts={option}
-        />
-      </div>
-    </>
+    <div className="relative w-full h-0 pb-[56.25%]">
+      <YouTube
+        videoId={youtubeId}
+        opts={{
+          ...opts,
+          width: "100%",
+          height: "100%",
+        }}
+        className="absolute top-0 left-0 w-full h-full"
+        onReady={(event) => event.target.pauseVideo()}
+      />
+    </div>
   );
 };
 
