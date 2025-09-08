@@ -4,7 +4,6 @@ import React from "react";
 import { getAuthSession } from "@/library/next-auth";
 import Link from "next/link";
 import prisma from "@/library/prisma";
-export const dynamic = "force-dynamic";
 import ButtonBack from "@/components/Utilities/ButtonBack";
 const Page = async () => {
   const user = await getAuthSession();
