@@ -1,6 +1,5 @@
 import Header from "@/components/AnimeList/Header";
 import AnimeList from "../components/AnimeList";
-import MangaList from "@/components/MangaList";
 import { getReponseApi, getRecomendations, randomize } from "../library/getApi";
 const Page = async () => {
   const animeTop = await getReponseApi("top/anime", "limit=10");
