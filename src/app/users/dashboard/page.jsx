@@ -9,7 +9,7 @@ const page = async () => {
     <>
       <div className="w-full  h-full text-white">
         <div className="flex p-5 items-center flex-col gap-5">
-          <div className=" flex flex-row md:w-1/2 md:justify-between items-center ">
+          <div className=" flex flex-row md:w-1/2 md:justify-between  items-center ">
             <h3 className="text-2xl font-semibold">WELCOME {user.name.toUpperCase()}</h3>
             <ButtonBack />
           </div>
@@ -34,10 +34,10 @@ const page = async () => {
 
           {/* Action buttons */}
           <div className="flex flex-row justify-center md:justify-start items-center gap-3 md:gap-5">
-            <Link href={"/users/collection"} className="px-3 py-2 font-bold text-lg md:text-xl bg-accent rounded-full hover:text-black hover:bg-purple-200 transition-all duration-300">
+            <Link href={"/users/dashboard/collection"} className="px-3 py-2 font-bold text-lg md:text-xl bg-accent rounded-full hover:text-black hover:bg-purple-200 transition-all duration-300">
               My Collection
             </Link>
-            <Link href={"/"} className="px-3 py-2 font-bold text-lg md:text-xl bg-accent rounded-full hover:text-black hover:bg-purple-200 transition-all duration-300">
+            <Link href={"/users/dashboard/comment"} className="px-3 py-2 font-bold text-lg md:text-xl bg-accent rounded-full hover:text-black hover:bg-purple-200 transition-all duration-300">
               My Comment
             </Link>
           </div>

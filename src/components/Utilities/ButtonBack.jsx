@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { ArrowCircleLeftIcon } from "@phosphor-icons/react/dist/ssr";
 
 const ButtonBack = () => {
   const router = useRouter();
@@ -9,9 +10,9 @@ const ButtonBack = () => {
     router.back();
   };
   return (
-    <button onClick={handleBack} className="px-6 py-1 bg-accent rounded-full  hover:text-black transition-all duration-300 font-semibold text-md">
-      Back
-    </button>
+    <>
+      <ArrowCircleLeftIcon className=" text-white cursor-pointer hover:text-accent transition-all duration-100" size={32} onClick={handleBack} />
+    </>
   );
 };
 

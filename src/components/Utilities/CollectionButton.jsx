@@ -2,27 +2,24 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const CollectionButton = ({ style, anime_mal_id, email_id }) => {
+const CollectionButton = ({ anime_mal_id, email_id, anime_image, anime_title, anime_synopsis }) => {
   const [collect, setCollect] = useState(false);
   const handleCollection = async (event) => {
     event.preventDefault();
 
-    const data = { anime_mal_id, email_id };
+    const data = { anime_mal_id, email_id, anime_image, anime_title, anime_synopsis };
 
     const response = await fetch("/api/v1/collection", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    // console.log("🚀 ~ handleCollection ~ response:", response);
-    const collection = await response?.json();
-    if (collection.status === 200) {
-      toast.success("Berhasil menambahkan ke Favorit!");
-      setCollect(!collect);
+
+    if (response.status === 200) {
+      toast.success("Berhasil menambahkan ke Favorit!", {});
+      setCollect(true);
     } else {
-      alert("gagal");
+      toast.error("Gagal menambahkan!");
     }
   };
   return (
